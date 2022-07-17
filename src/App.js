@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const db = [
+    {
+      inputFile: './media/input/input_audio_1.wav',
+      outputFile: './media/output/output_audio_1.wav'
+    }
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {db.map(item => {
+        return (
+          <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th><h1>Input Audio</h1></th>
+                <th>              <h1>Output Audio</h1>
+          </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><audio src={require(`${item?.inputFile}`)} controls/></td>
+                <td><audio src={require(`${item?.outputFile}`)} controls/></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        )
+        }
+      )}
     </div>
   );
 }
